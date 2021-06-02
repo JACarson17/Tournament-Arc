@@ -57,6 +57,12 @@ def rewriteFighters():
 	file = open('FighterList','wb')
 	pickle.dump(fighterList, file)
 	file.close()
+	
+def rewriteCustoms():
+	file = open('CustomFighters','wb')
+	pickle.dump(customFighters,file)
+	file.close()
 
 if __name__ == '__main__':
 	rewriteFighters()
+	rewriteCustoms()
