@@ -103,8 +103,7 @@ def customFighter():
 		import WriteFighters
 		global atk, dfn, spd, mntl
 		custom = fighter(name.get(),atk,dfn,spd,mntl)
-		customs = WriteFighters.getCustoms(custom)
-	
+		customs = WriteFighters.save(custom)
 		file = open('CustomFighters','wb')
 		pickle.dump(customs,file)
 		file.close()
@@ -295,7 +294,7 @@ def start():
 		speedU.grid(row=2,column=2)
 		speedL.grid(row=3,column=2)
 		speedD.grid(row=4,column=2)
-		mentalU.grid(row=2,column=3)
+		mentalU.grid(row=2,column=3) 
 		mentalL.grid(row=3,column=3)
 		mentalD.grid(row=4,column=3)
 		done.grid(row=0,column=4)
@@ -315,13 +314,13 @@ def change():
 		f.current = True
 		currentvar.set("Your current fighter is: "+f.name)
 		selection.grid_forget()
-		file.close()
 		customB['state'] = 'normal'
 		bracket8['state'] = 'normal'
 		pickFighter['state'] = 'normal'
-	
+
 	file = open('CustomFighters','rb')
 	customs = pickle.load(file)
+	file.close()
 	if customs == []:
 		currentvar.set('Please create a custom fighter to participate in tournaments')
 		customB['state']='normal'
@@ -329,7 +328,7 @@ def change():
 		selection = LabelFrame(options,text='Choose a fighter')
 		selection.grid(row=2,columnspan=3)
 		for i in customs:
-			but = Button(selection,text=i.name,command=lambda: pick(i))
+			but = Button(selection,text=i.name,command=lambda i=i: pick(i))
 			but.pack()
 
 

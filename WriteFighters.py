@@ -23,24 +23,8 @@ def save(f):
 		if i.name == f.name:
 			customs.remove(i)
 	customs.insert(0,f)
-	return(customs)
-
-def getCustoms(f):
-	file = open('CustomFighters','rb')
-	customs = pickle.load(file)
-	customs.append(f)
 	file.close()
 	return(customs)
-
-def getFighters():
-	file = open('FighterList', 'rb')
-	fighters = pickle.load(file)
-	fighter1 = fighters[random.randint(0,len(fighters)-1)]
-	fighter2 = fighters[random.randint(0,len(fighters)-1)]
-	while fighter1 == fighter2:
-		fighter2 = fighters[random.randint(0,len(fighters)-1)]
-	file.close()
-	return fighter1, fighter2
 
 def amtFighters(num):
 	file = open('FighterList', 'rb')
@@ -57,7 +41,7 @@ def rewriteFighters():
 	file = open('FighterList','wb')
 	pickle.dump(fighterList, file)
 	file.close()
-	
+
 def rewriteCustoms():
 	file = open('CustomFighters','wb')
 	pickle.dump(customFighters,file)

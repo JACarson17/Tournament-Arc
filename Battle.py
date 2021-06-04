@@ -35,8 +35,7 @@ def battle(faster, slower, floor,has):
 	slower.participation = slower.participation	+1
 	rnd = 1
 	while faster.roundsLost != 2 and slower.roundsLost != 2:
-		if has == True:
-			log.append("\nROUND " + str(rnd) + "\n")
+		log.append("\nROUND " + str(rnd) + "\n")
 		turn = 0
 		while faster.alive == True and slower.alive == True:
 			if turn % floor == floor - 1:
@@ -48,15 +47,13 @@ def battle(faster, slower, floor,has):
 		slower.roundReset()
 		rnd = rnd+1
 	if faster.roundsLost != 2:
-		if has == True:
-			log.append(faster.name + " wins!")
+		log.append(faster.name + " wins!")
 		faster.updateWR()
 		faster.fightReset()
 		slower.fightReset()
 		return(faster)
 	elif slower.roundsLost != 2:
-		if has == True:
-			log.append(slower.name + " wins!")
+		log.append(slower.name + " wins!")
 		slower.updateWR()
 		faster.fightReset()
 		slower.fightReset()
@@ -88,4 +85,3 @@ def npcBattle(faster,slower,floor):
 		faster.fightReset()
 		slower.fightReset()
 		return(slower)
-#if __name__ == '__main__':
